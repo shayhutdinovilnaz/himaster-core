@@ -5,12 +5,12 @@
 
     <groupId>ee.himaster</groupId>
     <artifactId>core</artifactId>
-    <version>0.0.1</version>
+    <version>1.0</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>localization-core</module>
-        <module>service-core</module>
+        <module>himaster-core-localization-starter</module>
+        <module>himaster-core-service</module>
     </modules>
 
 </project>
