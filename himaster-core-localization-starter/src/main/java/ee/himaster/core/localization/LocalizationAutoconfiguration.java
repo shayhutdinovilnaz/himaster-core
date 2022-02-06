@@ -1,25 +1,38 @@
 package ee.himaster.core.localization;
 
-import ee.himaster.core.localization.repository.LanguageRepository;
-import ee.himaster.core.localization.service.impl.DefaultLanguageService;
-import ee.himaster.core.localization.service.impl.DefaultLocalizationService;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import ee.himaster.core.localization.filter.LocalizationRequestFilter;
+import ee.himaster.core.localization.provider.LocaleProvider;
+import ee.himaster.core.localization.provider.impl.DefaultLocaleProvider;
+import ee.himaster.core.localization.service.LocaleService;
+import ee.himaster.core.localization.service.impl.DefaultLocaleService;
+import ee.himaster.core.localization.service.impl.DefaultLocalizedStringService;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.context.annotation.Import;
 
 @Configuration
-@EnableJpaRepositories
-@EntityScan
+@Import(EntityScanAutoconfiguration.class)
 public class LocalizationAutoconfiguration {
 
     @Bean
-    public DefaultLanguageService languageService(LanguageRepository languageRepository) {
-        return new DefaultLanguageService(languageRepository);
+    public LocaleProvider localeProvider() {
+        return new DefaultLocaleProvider();
     }
 
     @Bean
-    public DefaultLocalizationService localizationService() {
-        return new DefaultLocalizationService();
+    public LocaleService localeService(LocaleProvider localeProvider) {
+        return new DefaultLocaleService(localeProvider);
+    }
+
+    @Bean
+    public DefaultLocalizedStringService localizedStringService(LocaleService localeService) {
+        return new DefaultLocalizedStringService(localeService);
+    }
+
+    @Bean
+    @ConditionalOnProperty(prefix = "himaster.localization.request.filter", name = "enabled", havingValue = "true")
+    public LocalizationRequestFilter localizationRequestFilter(LocaleService localeService) {
+        return new LocalizationRequestFilter(localeService);
     }
 }

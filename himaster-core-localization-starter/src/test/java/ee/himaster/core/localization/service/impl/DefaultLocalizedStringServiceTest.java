@@ -1,34 +1,42 @@
 package ee.himaster.core.localization.service.impl;
 
 
-import ee.himaster.core.localization.model.LanguageModel;
+import ee.himaster.core.localization.model.Language;
 import ee.himaster.core.localization.model.LocalizedStringModel;
 import ee.himaster.core.localization.model.LocalizedStringValueModel;
+import ee.himaster.core.localization.service.LocaleService;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
-public class DefaultLocalizationServiceTest {
+public class DefaultLocalizedStringServiceTest {
 
-    private final DefaultLocalizationService underTest = new DefaultLocalizationService();
+    @Mock
+    private LocaleService localeService;
+
+    @Before
+    public void initMocks() {
+        MockitoAnnotations.openMocks(this);
+    }
+
+    private final DefaultLocalizedStringService underTest = new DefaultLocalizedStringService(localeService);
 
     @Test
     public void testGetLocalizedStringValueRu() {
-        final LanguageModel ruLang = mock(LanguageModel.class);
-        final LanguageModel enLang = mock(LanguageModel.class);
+        final Language ruLang = Language.RUSSIAN;
+        final Language enLang = Language.ENGLISH;
         final LocalizedStringModel localizedString = mock(LocalizedStringModel.class);
         final LocalizedStringValueModel ruLocalizedString = mock(LocalizedStringValueModel.class);
         final LocalizedStringValueModel enLocalizedString = mock(LocalizedStringValueModel.class);
@@ -52,8 +60,8 @@ public class DefaultLocalizationServiceTest {
 
     @Test
     public void testGetLocalizedStringValueWithNullableLanguage() {
-        final LanguageModel ruLang = mock(LanguageModel.class);
-        final LanguageModel enLang = mock(LanguageModel.class);
+        final Language ruLang = Language.RUSSIAN;
+        final Language enLang = Language.ENGLISH;
         final LocalizedStringModel localizedString = mock(LocalizedStringModel.class);
         final LocalizedStringValueModel ruLocalizedString = mock(LocalizedStringValueModel.class);
         final LocalizedStringValueModel enLocalizedString = mock(LocalizedStringValueModel.class);
@@ -72,21 +80,20 @@ public class DefaultLocalizationServiceTest {
         verifyNoMoreInteractions(ruLocalizedString);
         verify(enLocalizedString).getLanguage();
         verifyNoMoreInteractions(enLocalizedString);
-        verifyZeroInteractions(enLocalizedString);
     }
 
     @Test
     public void testGetLocalizedStringValueWithNullableLocalizedString() {
-        final LanguageModel ruLang = mock(LanguageModel.class);
+        final Language ruLang = Language.RUSSIAN;
 
         Assert.assertNull(underTest.getLocalizedStringValue(ruLang, null));
     }
 
     @Test
     public void testGetLocalizedStringValueForNotLocalizedValue() {
-        final LanguageModel ruLang = mock(LanguageModel.class);
-        final LanguageModel enLang = mock(LanguageModel.class);
-        final LanguageModel deLang = mock(LanguageModel.class);
+        final Language ruLang = Language.RUSSIAN;
+        final Language enLang = Language.ENGLISH;
+        final Language deLang = Language.DEUTSCHE;
         final LocalizedStringModel localizedString = mock(LocalizedStringModel.class);
         final LocalizedStringValueModel ruLocalizedString = mock(LocalizedStringValueModel.class);
         final LocalizedStringValueModel enLocalizedString = mock(LocalizedStringValueModel.class);
@@ -109,9 +116,7 @@ public class DefaultLocalizationServiceTest {
 
     @Test
     public void testCreateLocalizedStringValue() {
-        final String isoCode = "RU";
-        final LanguageModel ruLang = new LanguageModel();
-        ruLang.setIsoCode(isoCode);
+        final Language ruLang = Language.RUSSIAN;
         final LocalizedStringModel localizedString = new LocalizedStringModel();
         final String ruValue = "Русское значение";
 
@@ -125,8 +130,8 @@ public class DefaultLocalizationServiceTest {
 
     @Test
     public void testUpdateLocalizedStringValue() {
-        final LanguageModel ruLang = mock(LanguageModel.class);
-        final LanguageModel enLang = mock(LanguageModel.class);
+        final Language ruLang = Language.RUSSIAN;
+        final Language enLang = Language.ENGLISH;
         final LocalizedStringModel localizedString = mock(LocalizedStringModel.class);
         final LocalizedStringValueModel ruLocalizedString = mock(LocalizedStringValueModel.class);
         final LocalizedStringValueModel enLocalizedString = mock(LocalizedStringValueModel.class);

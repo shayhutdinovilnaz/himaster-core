@@ -13,7 +13,7 @@ import java.util.Date;
 public abstract class ItemModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @Column(nullable = false)
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date createdTime;
