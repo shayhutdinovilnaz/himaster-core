@@ -1,5 +1,6 @@
 package ee.himaster.core.localization.service.impl;
 
+import ee.himaster.core.localization.model.Currency;
 import ee.himaster.core.localization.model.Language;
 import ee.himaster.core.localization.model.LocaleModel;
 import ee.himaster.core.localization.provider.LocaleProvider;
@@ -42,7 +43,7 @@ public class DefaultLocaleService implements LocaleService {
     }
 
     @Override
-    public String getCurrentCurrency() {
+    public Currency getCurrentCurrency() {
         validateInitializing();
         return localeModel.getCurrency();
     }

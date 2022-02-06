@@ -1,0 +1,20 @@
+[
+  {
+    "code": "EE_EST",
+    "timeZoneId": "UTC",
+    "languageIsoCode": "EST",
+    "ccy": "EURO"
+  },
+  {
+    "code": "EE_RU",
+    "timeZoneId": "UTC",
+    "languageIsoCode": "RU",
+    "ccy": "EURO"
+  },
+  {
+    "code": "EE_EN",
+    "timeZoneId": "UTC",
+    "languageIsoCode": "EN",
+    "ccy": "EURO"
+  }
+]

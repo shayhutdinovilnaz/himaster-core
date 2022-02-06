@@ -1,5 +1,6 @@
 package ee.himaster.core.localization.service;
 
+import ee.himaster.core.localization.model.Currency;
 import ee.himaster.core.localization.model.Language;
 import java.util.TimeZone;
 
@@ -28,5 +29,5 @@ public interface LocaleService {
      *
      * @return the current request currency.
      */
-    String getCurrentCurrency();
+    Currency getCurrentCurrency();
 }
