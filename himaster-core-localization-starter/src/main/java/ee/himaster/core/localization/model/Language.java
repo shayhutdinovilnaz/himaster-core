@@ -26,9 +26,13 @@ public enum Language {
         LANGUAGE_MAP = Collections.unmodifiableMap(map);
     }
 
-    public static Language get(String name) {
-        return Optional.ofNullable(LANGUAGE_MAP.get(name.toLowerCase()))
-                .orElseThrow(() -> new IllegalArgumentException("Illegal argument exception. Language iso-code: " + name));
+    public static Language get(final String isoCode) {
+        final Language language = LANGUAGE_MAP.get(isoCode);
+        if (language == null) {
+            throw new IllegalArgumentException("Illegal argument exception. Language iso-code: " + isoCode);
+        }
+
+        return language;
     }
 
 }

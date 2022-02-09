@@ -5,6 +5,7 @@ import ee.himaster.core.localization.model.Language;
 import ee.himaster.core.localization.model.LocaleConfiguration;
 import ee.himaster.core.localization.model.LocaleModel;
 import ee.himaster.core.localization.provider.LocaleProvider;
+import ee.himaster.core.service.exception.ModelNotFoundException;
 import ee.himaster.core.service.util.JsonConfigurationReader;
 import java.util.List;
 import java.util.Map;
@@ -55,8 +56,13 @@ public class DefaultLocaleProvider implements LocaleProvider {
     }
 
     @Override
-    public LocaleModel getByCode(String localeCode) {
+    public LocaleModel getByCode(final String localeCode) {
         Objects.requireNonNull(localeCode, "Locale code could not be nullable");
-        return LOCALE_CONFIGURATION.get(localeCode.toUpperCase());
+        LocaleModel localeModel = LOCALE_CONFIGURATION.get(localeCode.toUpperCase());
+        if (localeModel == null) {
+            throw new ModelNotFoundException("Local is not found by code. Code: " + localeCode);
+        }
+
+        return localeModel;
     }
 }

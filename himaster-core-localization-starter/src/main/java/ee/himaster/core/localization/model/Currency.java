@@ -28,7 +28,11 @@ public enum Currency {
     }
 
     public static Currency get(String name) {
-        return Optional.ofNullable(CURRENCY_MAP.get(name.toLowerCase()))
-                .orElseThrow(() -> new IllegalArgumentException("Illegal argument exception. Currency code: " + name));
+        Currency currency = CURRENCY_MAP.get(name.toUpperCase());
+        if (currency == null) {
+            throw new IllegalArgumentException("Illegal argument exception. Currency code: " + name);
+        }
+
+        return currency;
     }
 }
