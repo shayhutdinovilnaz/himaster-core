@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class LocalizationRequestFilter implements Filter {
-    private static final String REQUEST_HEADER_LOCALE_CODE_PARAM_NAME = "locale-code";
+    private static final String REQUEST_HEADER_LOCALE_CODE_PARAM_NAME = "Locale-code";
 
     private final LocaleService localeService;
 
