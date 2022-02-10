@@ -6,14 +6,17 @@ import ee.himaster.core.localization.provider.impl.DefaultLocaleProvider;
 import ee.himaster.core.localization.service.LocaleService;
 import ee.himaster.core.localization.service.impl.DefaultLocaleService;
 import ee.himaster.core.localization.service.impl.DefaultLocalizedStringService;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import(EntityScanAutoconfiguration.class)
+@Slf4j
 public class LocalizationAutoconfiguration {
+    private static final Log LOG = LogFactory.getLog(LocalizationAutoconfiguration.class);
 
     @Bean
     public LocaleProvider localeProvider() {
@@ -33,6 +36,7 @@ public class LocalizationAutoconfiguration {
     @Bean
     @ConditionalOnProperty(prefix = "himaster.localization.request.filter", name = "enabled", havingValue = "true")
     public LocalizationRequestFilter localizationRequestFilter(LocaleService localeService) {
+        LOG.info("The LocalizationRequestFilter is successfully initialized.");
         return new LocalizationRequestFilter(localeService);
     }
 }

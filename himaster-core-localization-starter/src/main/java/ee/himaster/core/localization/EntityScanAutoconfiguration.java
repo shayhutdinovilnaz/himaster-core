@@ -6,6 +6,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConditionalOnProperty(prefix = "himaster.localization.entity.scan", name = "enabled", havingValue = "true")
-@EntityScan
+@EntityScan(value = "ee.himaster")
 public class EntityScanAutoconfiguration {
 }

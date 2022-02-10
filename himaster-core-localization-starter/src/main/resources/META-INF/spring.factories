@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    ee.himaster.core.localization.LocalizationAutoconfiguration
+ee.himaster.core.localization.LocalizationAutoconfiguration,\
+ee.himaster.core.localization.EntityScanAutoconfiguration
