@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class LocalizedStringValueModel extends ItemModel {
-    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Language language;
 
     @Column(nullable = false)

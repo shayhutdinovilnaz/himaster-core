@@ -20,7 +20,7 @@ public abstract class AbstractModelService<T extends ItemModel> implements Model
     }
 
     @Override
-    public T getById(final long id) {
+    public T getById(final int id) {
         return getItemRepository().findById(id).orElseThrow(() -> new ModelNotFoundException("Model isn't found. Required model id = " + id));
     }
 
@@ -30,5 +30,5 @@ public abstract class AbstractModelService<T extends ItemModel> implements Model
         getItemRepository().delete(item);
     }
 
-    protected abstract JpaRepository<T, Long> getItemRepository();
+    protected abstract JpaRepository<T, Integer> getItemRepository();
 }

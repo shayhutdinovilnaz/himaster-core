@@ -32,7 +32,7 @@ public interface ModelService<T extends ItemModel> {
      * @return the entity with the given id or {@literal Optional#empty()} if none found.
      * @throws IllegalArgumentException if {@literal id} is {@literal null}.
      */
-    T getById(long id);
+    T getById(int id);
 
     default void updateSaveTime(final T item) {
 
