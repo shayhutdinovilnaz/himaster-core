@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.*;
 
 
-@Entity
+@Entity(name = "LOCALIZED_STRING_VALUE")
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"language", "localized_value_id"})})
 @Data
 @EqualsAndHashCode(callSuper = true)
