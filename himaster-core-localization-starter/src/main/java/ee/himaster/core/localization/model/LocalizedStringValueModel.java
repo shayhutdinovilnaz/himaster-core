@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity(name = "LOCALIZED_STRING_VALUE")
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"language", "localized_value_id"})})
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, exclude="localizedString")
 public class LocalizedStringValueModel extends ItemModel {
     @Enumerated(EnumType.STRING)
     private Language language;

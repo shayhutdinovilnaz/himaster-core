@@ -5,14 +5,12 @@ import ee.himaster.core.localization.model.Language;
 import ee.himaster.core.localization.model.LocaleModel;
 import ee.himaster.core.localization.provider.LocaleProvider;
 import ee.himaster.core.localization.service.LocaleService;
-import java.util.TimeZone;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-import org.springframework.web.context.annotation.RequestScope;
 
-@Service
-@RequestScope
+import java.util.TimeZone;
+
+
 @RequiredArgsConstructor
 @Slf4j
 public class DefaultLocaleService implements LocaleService {

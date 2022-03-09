@@ -12,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.context.annotation.RequestScope;
 
 @Configuration
 @Slf4j
@@ -24,6 +25,7 @@ public class LocalizationAutoconfiguration {
     }
 
     @Bean
+    @RequestScope
     public LocaleService localeService(LocaleProvider localeProvider) {
         return new DefaultLocaleService(localeProvider);
     }

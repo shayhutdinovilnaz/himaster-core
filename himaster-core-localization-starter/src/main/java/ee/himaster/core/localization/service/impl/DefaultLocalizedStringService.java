@@ -5,12 +5,11 @@ import ee.himaster.core.localization.model.LocalizedStringModel;
 import ee.himaster.core.localization.model.LocalizedStringValueModel;
 import ee.himaster.core.localization.service.LocaleService;
 import ee.himaster.core.localization.service.LocalizedStringService;
+import lombok.RequiredArgsConstructor;
+
 import java.util.Collection;
 import java.util.Optional;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
-@Service
 @RequiredArgsConstructor
 public class DefaultLocalizedStringService implements LocalizedStringService {
     private final LocaleService localeService;

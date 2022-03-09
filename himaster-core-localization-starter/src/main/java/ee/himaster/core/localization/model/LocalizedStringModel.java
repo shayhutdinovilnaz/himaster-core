@@ -14,7 +14,7 @@ import java.util.Set;
 
 @Entity(name = "LOCALIZED_STRING")
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, exclude="localizedValues")
 public class LocalizedStringModel extends ItemModel {
     @Column(name = "default_value")
     private String defaultValue;
