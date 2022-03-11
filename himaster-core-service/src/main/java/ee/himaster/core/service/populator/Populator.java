@@ -7,7 +7,6 @@ public interface Populator<T, S> {
      *
      * @param source - source object
      * @param target - target object
-     *
      * @return populated target object
      */
     T populate(S source, T target);
@@ -17,7 +16,6 @@ public interface Populator<T, S> {
      *
      * @param source - source object
      * @param target - target object
-     *
      * @return populated target object
      */
     S reversePopulate(T source, S target);
