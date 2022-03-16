@@ -1,8 +1,7 @@
 package ee.himaster.core.localization.model;
 
 import ee.himaster.core.service.model.ItemModel;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,8 +12,9 @@ import java.util.Set;
 
 
 @Entity(name = "localized_string")
-@Data
-@EqualsAndHashCode(callSuper = true, exclude="localizedValues")
+@NoArgsConstructor
+@Getter
+@Setter
 public class LocalizedStringModel extends ItemModel {
     @Column(name = "default_value")
     private String defaultValue;
