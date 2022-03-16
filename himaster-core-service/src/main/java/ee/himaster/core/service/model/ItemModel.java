@@ -14,10 +14,10 @@ public abstract class ItemModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(nullable = false)
+    @Column(nullable = false, name = "created_time")
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date createdTime;
-    @Column(nullable = false)
+    @Column(nullable = false, name="modified_time")
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date modifiedTime;
 }

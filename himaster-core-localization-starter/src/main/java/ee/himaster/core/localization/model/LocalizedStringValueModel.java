@@ -7,8 +7,10 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.*;
 
 
-@Entity(name = "LOCALIZED_STRING_VALUE")
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"language", "localized_value_id"})})
+@Entity
+@Table(name = "localized_string_value", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"language", "localized_value_id"})
+})
 @Data
 @EqualsAndHashCode(callSuper = true, exclude="localizedString")
 public class LocalizedStringValueModel extends ItemModel {

@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-@Entity(name = "LOCALIZED_STRING")
+@Entity(name = "localized_string")
 @Data
 @EqualsAndHashCode(callSuper = true, exclude="localizedValues")
 public class LocalizedStringModel extends ItemModel {
