@@ -1,10 +1,10 @@
 package ee.himaster.core.localization.model;
 
+import lombok.Getter;
+
 import java.util.Collections;
 import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
-import lombok.Getter;
 
 @Getter
 public enum Language {

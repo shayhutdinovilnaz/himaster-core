@@ -3,6 +3,7 @@ package ee.himaster.core.localization.service.impl;
 import ee.himaster.core.localization.model.Currency;
 import ee.himaster.core.localization.model.Language;
 import ee.himaster.core.localization.model.LocaleModel;
+import ee.himaster.core.localization.model.Region;
 import ee.himaster.core.localization.provider.LocaleProvider;
 import ee.himaster.core.localization.service.LocaleService;
 import lombok.RequiredArgsConstructor;
@@ -44,6 +45,11 @@ public class DefaultLocaleService implements LocaleService {
     public Currency getCurrentCurrency() {
         validateInitializing();
         return localeModel.getCurrency();
+    }
+
+    @Override
+    public LocaleModel getLocale(final Region region, final Language language) {
+        return localeProvider.getByRegionAndLanguage(region, language);
     }
 
     private void validateInitializing() {

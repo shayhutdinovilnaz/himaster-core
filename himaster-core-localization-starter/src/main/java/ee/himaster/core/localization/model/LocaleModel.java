@@ -1,6 +1,7 @@
 package ee.himaster.core.localization.model;
 
 import java.util.TimeZone;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,4 +12,6 @@ public class LocaleModel {
     private final Language language;
     private final TimeZone timeZone;
     private final Currency currency;
+    private final Region region;
+    private final boolean defaultForRegion;
 }

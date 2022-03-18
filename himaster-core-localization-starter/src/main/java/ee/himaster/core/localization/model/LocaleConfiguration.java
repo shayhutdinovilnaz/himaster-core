@@ -1,7 +1,9 @@
 package ee.himaster.core.localization.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,4 +20,8 @@ public class LocaleConfiguration implements Serializable {
     private String languageIsoCode;
     @JsonProperty("ccy")
     private String currency;
+    @JsonProperty("region")
+    private String region;
+    @JsonProperty("default")
+    private boolean defaultValueForRegion;
 }

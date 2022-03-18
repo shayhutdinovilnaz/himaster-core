@@ -1,20 +1,26 @@
 [
   {
-    "code": "EE_EST",
+    "code": "EST_EE",
     "timeZoneId": "UTC",
     "languageIsoCode": "EE",
-    "ccy": "EURO"
+    "ccy": "EURO",
+    "region": "EST",
+    "default": true
   },
   {
-    "code": "EE_RU",
+    "code": "EST_RU",
     "timeZoneId": "UTC",
     "languageIsoCode": "RU",
-    "ccy": "EURO"
+    "ccy": "EURO",
+    "region": "EST",
+    "default": false
   },
   {
-    "code": "EE_EN",
+    "code": "EST_EN",
     "timeZoneId": "UTC",
     "languageIsoCode": "EN",
-    "ccy": "EURO"
+    "ccy": "EURO",
+    "region": "EST",
+    "default": false
   }
 ]

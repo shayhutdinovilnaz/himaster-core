@@ -2,6 +2,9 @@ package ee.himaster.core.localization.service;
 
 import ee.himaster.core.localization.model.Currency;
 import ee.himaster.core.localization.model.Language;
+import ee.himaster.core.localization.model.LocaleModel;
+import ee.himaster.core.localization.model.Region;
+
 import java.util.TimeZone;
 
 public interface LocaleService {
@@ -30,4 +33,12 @@ public interface LocaleService {
      * @return the current request currency.
      */
     Currency getCurrentCurrency();
+
+
+    /**
+     * The retrieving the locale model by a region and a language. The Language could be nullable.
+     *
+     * @return the locale model
+     */
+    LocaleModel getLocale(Region region, Language language);
 }
