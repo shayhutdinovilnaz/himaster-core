@@ -1,6 +1,8 @@
 package ee.himaster.core.service.populator;
 
-public interface Populator<T, S> {
+import ee.himaster.core.service.model.ItemModel;
+
+public interface Populator<T, S extends ItemModel> {
 
     /**
      * Populate target object with values of source

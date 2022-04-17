@@ -1,12 +1,14 @@
 package ee.himaster.core.service.converter;
 
+import ee.himaster.core.service.model.ItemModel;
+
 /**
  * Converting instance of object from source class to target class.
  * Some of field of target class could be none converted.
  * Converter can invoke another converter for converting field.
  * Also necessary implement reverse converting.
  */
-public interface Converter<T, S> {
+public interface Converter<T, S extends ItemModel> {
     /**
      * Converting instance of object from source class to target class.
      *

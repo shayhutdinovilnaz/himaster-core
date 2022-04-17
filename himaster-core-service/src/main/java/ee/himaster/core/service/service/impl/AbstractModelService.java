@@ -7,9 +7,16 @@ import ee.himaster.core.service.service.ModelService;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.util.Assert;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.transaction.Transactional;
 
 public abstract class AbstractModelService<T extends ItemModel> implements ModelService<T> {
+
+    @PersistenceContext(type = PersistenceContextType.EXTENDED)
+    private EntityManager entityManager;
+
     @Override
     @Transactional
     public void save(final T item) {
@@ -28,6 +35,12 @@ public abstract class AbstractModelService<T extends ItemModel> implements Model
     @Transactional
     public void delete(final T item) {
         getItemRepository().delete(item);
+    }
+
+    protected void attach(final T item) {
+        if (item.getId() != null) {
+            entityManager.find(item.getClass(), item.getId());
+        }
     }
 
     protected abstract JpaRepository<T, Integer> getItemRepository();
