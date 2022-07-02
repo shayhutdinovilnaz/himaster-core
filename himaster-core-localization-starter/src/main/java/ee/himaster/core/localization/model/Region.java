@@ -8,15 +8,17 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Getter
 public enum Region {
-    ESTONIA_GENERAL("EST");
+    ESTONIA_GENERAL("EST", "EST");
 
-    Region(String code) {
+    Region(String code, String countryIsoCode) {
         this.code = code;
+        this.countryIsoCode = countryIsoCode;
     }
 
     private static final Map<String, Region> REGION_MAP;
 
     private final String code;
+    private final String countryIsoCode;
 
     static {
         Map<String, Region> map = new ConcurrentHashMap<>();

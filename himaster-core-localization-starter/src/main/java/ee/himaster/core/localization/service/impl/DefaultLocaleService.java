@@ -52,6 +52,12 @@ public class DefaultLocaleService implements LocaleService {
         return localeProvider.getByRegionAndLanguage(region, language);
     }
 
+    @Override
+    public LocaleModel getCurrentLocale() {
+        validateInitializing();
+        return localeModel;
+    }
+
     private void validateInitializing() {
         if (!initialized) {
             log.error("Localization was not installed.");

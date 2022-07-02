@@ -41,4 +41,6 @@ public interface LocaleService {
      * @return the locale model
      */
     LocaleModel getLocale(Region region, Language language);
+
+    LocaleModel getCurrentLocale();
 }
