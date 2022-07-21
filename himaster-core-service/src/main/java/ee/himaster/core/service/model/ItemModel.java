@@ -12,12 +12,12 @@ import java.util.Date;
 @Setter
 public abstract class ItemModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(nullable = false, name = "created_time")
+    @Column(name = "created_time")
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date createdTime;
-    @Column(nullable = false, name="modified_time")
+    @Column(name="modified_time")
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date modifiedTime;
 }

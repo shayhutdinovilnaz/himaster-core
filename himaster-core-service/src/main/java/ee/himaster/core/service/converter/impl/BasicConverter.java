@@ -27,10 +27,6 @@ public class BasicConverter<T, S extends ItemModel> implements Converter<T, S> {
     public T convert(S source) {
         Objects.requireNonNull(source);
 
-        if (source.getId() != null) {
-            entityManager.find(source.getClass(), source.getId());
-        }
-
         final T target = targetSupplier.get();
         for (Populator<T, S> populator : populators) {
             populator.populate(source, target);

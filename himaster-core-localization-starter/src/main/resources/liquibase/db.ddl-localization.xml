@@ -12,10 +12,10 @@
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_localized_string"/>
             </column>
             <column name="created_time" type="DATETIME">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="modified_time" type="DATETIME">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="default_value" type="VARCHAR(255)"/>
         </createTable>
@@ -26,10 +26,10 @@
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_localized_string_value"/>
             </column>
             <column name="created_time" type="DATETIME">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="modified_time" type="DATETIME">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="language" type="VARCHAR(255)"/>
             <column name="value" type="VARCHAR(255)">
